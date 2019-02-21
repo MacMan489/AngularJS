@@ -1,0 +1,100 @@
+here is my assignment;
+
+I have written a simple back-end that provides a service called "Home/GetBattingOrder".
+The response never changes, it's always the 1995 Cleveland Indians batting order in JSON
+format. The goal of this assignment is to call this service using JQuery AJAX, and use
+an AngularJS ng-repeat directive to display the results inside the response. As usual,
+all of the starter code is written for you, and I have actually written all of the
+JavaScript for you. Just read the JavaScript I have written in Home.js, and you should
+be able to complete the assignment by modifying only the Home.cshtml file.
+
+This is the JS code;
+
+angular.module("my-module", ["ng"])
+
+.controller("my-root-controller", ["$scope", "$http", function ($scope, $http) {
+
+$http.get("http://localhost:52025/Home/GetBattingOrder").then(function (data) {
+
+$scope.players = JSON.parse(data.data).BattingOrder;
+
+});
+
+}]);
+
+and the is the initial html code;
+
+<html>
+
+<head>
+
+<link href="~/Styles/Home.css" rel="stylesheet" />
+
+<script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
+
+<script src="~/Scripts/Home.js"></script>
+
+<title>Introduction to AngularJS</title>
+
+</head>
+
+
+<body>
+
+Hello World !
+
+<!-- HTML Here -->
+
+</body>
+
+</html>
+
+
+Here is my answer to the prompt
+
+
+Assuming that the the AJAX fetches all the players information and the "players" object contains name, we need to do "ng-repeat" on the the "players" object.
+
+<html ng-app="my-module">
+
+<head>
+
+<link href="~/Styles/Home.css" rel="stylesheet" />
+
+<script data-require="angular.js@1.4.8" data-semver="1.4.8" src="https://code.angularjs.org/1.4.8/angular.js"></script>
+
+<script src="~/Scripts/Home.js"></script>
+
+<title>Introduction to AngularJS</title>
+
+</head>
+<body ng-controller="my-root-controller">
+
+Hello World !
+
+<ul>
+    <li ng-repeat="player in players">    <!----Apply ng-repeat on players which acts like a loop and while iteration "player" holds information of invidiual player-->
+       <span>{{player.name}}</span>
+    </li>
+</ul>
+</body>
+
+</html>
+
+===============================================
+
+The ng-repeat directive repeats a set of HTML, a given number of times.
+
+The set of HTML will be repeated once per item in a collection.
+
+The collection must be an array or an object, so make sure you are getting "players" as an array of objects. If the objects contains more information other than name, you can just use "player,information" where "information" is an attribute of the object "player".
+
+
+
+
+
+
+
+
+
+
