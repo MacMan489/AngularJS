@@ -1,0 +1,73 @@
+QUESTION 1
+
+The onreadystatechange property of the XMLHttpRequest object _____.
+
+is an integer reporting the status of the request
+
+determines which event handler will be called when the XMLHttpRequest readyState property changes
+
+is the data returned by the server as a text string
+
+is the HTTP status code returned by the server
+
+2 points   
+
+QUESTION 2
+
+Which angular directive initializes the AngularJS environment
+
+ng-app
+
+ng-model
+
+ng-bind
+
+ng-repeat
+
+2 points   
+
+QUESTION 3
+
+Angular's _____ module handles both HTTP GET and POST requests.
+
+$index
+
+$routeMatch
+
+$request
+
+$http
+
+2 points   
+
+QUESTION 4
+
+You put ng-click="get_name()" in an opening button tag in your html, and you also have a template that looks like this, {{name}}. Assume the button is clicked. In the controller, what function would assign a name to the template?
+
+get_name = function() {name="Rumpelstiltskin";};
+
+$scope.get_name = function() {name="Rumpelstiltskin";};
+
+$scope.get_name = function() {$scope.name = "Rumpelstiltskin";};
+
+3 points   
+
+
+
+
+
+QUESTION 1The onreadystatechange property of the XMLHttpRequest object
+
+determines which event handler will be called when the XMLHttpRequest readyState property changes
+
+QUESTION 2Which angular directive initializes the AngularJS environment
+
+ng-app
+
+QUESTION 3Angular's _____ module handles both HTTP GET and POST requests.
+
+$http
+
+QUESTION 4You put ng-click="get_name()" in an opening button tag in your html, and you also have a template that looks like this, {{name}}. Assume the button is clicked. In the controller, what function would assign a name to the template?
+
+$scope.get_name = function() {name="Rumpelstiltskin";};
