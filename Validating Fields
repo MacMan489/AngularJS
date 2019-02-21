@@ -1,0 +1,172 @@
+Using AngularJS, create a form to validate fields:
+
+First Name: at least 2 characters
+
+Last Name: at least 2 characters
+
+Phone Number: Format (###)###-####
+
+email: Format xxx@xxx.xxx
+
+zip code object will be of the form ...
+
+[
+
+{"zip": "48710", "city": "university center", "state": "MI"},
+
+{"zip": "60609", "city": "chicago", "state": "IL"}
+
+]
+
+So the form would look like this
+
+First Name: _______
+
+Last Name: _______
+
+Phone Number:  _______
+
+Email: _______
+
+City (looked up)
+
+State (looked up)
+
+Zip: _______
+
+___________________________________________________________________________________________
+<!DOCTYPE html>
+
+<html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>  
+
+<body>
+
+<h2>Form validation</h2>
+
+<form ng-app="validationApp" ng-controller="validationCtrl"
+
+name="myForm" novalidate>
+
+<p>FirstName:<br>
+
+<input type="text" name="firstname" ng-model="firstname" required>
+
+<span style="color:red" ng-show="myForm.firstname.$dirty && myForm.firstname.$invalid">
+
+<span ng-show="myForm.firstname.$error.required">first name is required.</span>
+
+</span>
+
+</p>
+
+<p>LastName:<br>
+
+<input type="text" name="lastname" ng-model="lastname" required>
+
+<span style="color:red" ng-show="myForm.lastname.$dirty && myForm.lastname.$invalid">
+
+<span ng-show="myForm.lastname.$error.required">last name is required.</span>
+
+</span>
+
+</p>
+
+<p>Phone Number:<br>
+
+<input type="text" name="phone" ng-model="phone" ng-pattern="phoneNumberPattern" required>
+
+<span style="color:red" ng-show="myForm.phone.$dirty && myForm.phone.$invalid">
+
+<span ng-show="myForm.phone.$error.required">phone number is required.</span>
+
+<span ng-show="myForm.phone.$error.pattern">phone number is invalid.</span>
+
+</span>
+
+</p>
+
+<p>Email:<br>
+
+<input type="email" name="email" ng-model="email" required>
+
+<span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+
+<span ng-show="myForm.email.$error.required">Email is required.</span>
+
+<span ng-show="myForm.email.$error.email">Give proper email address.</span>
+
+</span>
+
+</p>
+
+<p>City</p>
+
+<select ng-model="zipObj.city">
+
+<option ng-repeat="x in cities">{{x}}</option>
+
+</select>
+
+<p>State</p>
+
+<select ng-model="zipObj.state">
+
+<option ng-repeat="x in states">{{x}}</option>
+
+</select>
+
+<p>Zip:<br>
+
+<input type="text" name="zip" ng-model="zipObj.zip" required>
+
+<span style="color:red" ng-show="myForm.zip.$dirty && myForm.zip.$invalid">
+
+<span ng-show="myForm.zip.$error.required">zip code is required.</span>
+
+</span>
+
+</p>
+
+<p>
+
+<input type="submit"
+
+ng-disabled="myForm.user.$dirty && myForm.user.$invalid ||  
+
+myForm.email.$dirty && myForm.email.$invalid || myForm.zip.$dirty && myForm.zip.$invalid || myForm.phone.$dirty && myForm.phone.$invalid">
+
+</p>
+
+</form>
+
+<script>
+
+var app = angular.module('validationApp', []);
+
+app.controller('validationCtrl', function($scope) {
+
+$scope.firstname = "";
+
+$scope.lastname = "";
+
+$scope.phone = "";
+
+$scope.email = "";
+
+$scope.phoneNumberPattern = /^\(\d{3}[)]\d{3}[- ]?\d{4}$/;
+
+$scope.cities = ["Universirt center", "Chicago"];
+
+$scope.states = ["ML","IL"];
+
+$scope.zipObj = {"zip":"","city":"","state":""};
+
+});
+
+</script>
+
+</body>
+
+</html>
