@@ -1,0 +1,93 @@
+In AngularJS, write the code for displaying a table based on the user's inputs for 
+"Rows" and "Columns" that updates without needing the page refreshed.
+
+CODE
+
+----------------
+
+<!DOCTYPE html>
+
+<html lang = "en">
+
+<head>
+
+<title> Project 1 </title>
+
+<meta charset = "utf-8" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+</head>
+
+<body>
+
+<div ng-app="myApp" ng-controller="ctrl1">
+
+<!-- user input for the row -->
+
+Rows: <input ng-model="row" type="number" />
+
+<!-- user input for the Column -->
+
+Columns: <input ng-model="column" type="number" />
+
+  
+
+<table border="1">
+
+<!-- calling the getRow function for getting the number of rows to repeat -->
+
+<!-- Give the rows values greter than 0 then only table will be printed--->
+
+<tr ng-repeat="x in getRow() track by $index">
+
+<!-- calling the getColumn function for getting the number of columns to repeat and print the index value of column-->
+
+<!-- Give the column values greter than 0 then only table will be printed-->
+
+<td ng-repeat="y in getColumn() track by $index">{{$index+1}}</td>
+
+</tr>
+
+</table>
+
+</div>
+
+<script>
+
+var app = angular.module('myApp', []);
+
+app.controller('ctrl1', function($scope) {
+
+// declaration of variables
+
+$scope.row=0;
+
+$scope.column=0;
+
+//function for returing the arraylist of size as row
+
+$scope.getRow = function() {
+
+return new Array($scope.row);
+
+};
+
+//function for returing the arraylist of size as column
+
+$scope.getColumn = function() {
+
+return new Array($scope.column);
+
+};
+
+});
+
+</script>
+
+</body>
+
+</html>
+
+-----------------------------------------------------
+
