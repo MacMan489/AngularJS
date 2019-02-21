@@ -1,0 +1,34 @@
+Pick out a javascript framework (use google to find one, but JQuery and AngularJS are some popular ones)
+and provide a short review here to stimulate discussion.
+
+
+
+
+
+ReactJs
+
+React is a large JavaScript library that helps us update the View for the user. React provides a very simple and efficient way to build component trees. But React still doesn't let us create applications on its own. The library lacks the model and controller layers. Means you have find or depends on some system that fills the gap of Model & Controller & control the application workflow.
+
+Some points related to ReactJs
+1. Rect is a JavaScript library for building user interfaces. It gives React a sense of stability that many new frameworks lack. It provides tools that allow logic (javascript) to interact with UI (the DOM - HTML)
+
+2. React support V of MVC(model, view & Controller).
+
+3. React is a Javascript library that was originally created, and is maintained, by Facebook
+
+4. React’s most important advances are the emphasis on
+a. One-Way Data Flow: React uses one-way data flow, so only changes to the data result in changes to the UI. Meaning we are able to direct the flow of data only in one direction. Because of this, it’s always clear where the data was changed.
+b. Components: The React UI is declared inside components. A component is like a function that accepts props as inputs and outputs the declared interface.
+c. Ecosystem: React isn’t just the UI, it’s a framework/ecosystem. You can manage the state using a state manager such as Redux. Build encapsulated components that manage their own state, then compose them to make complex UI.
+d. The adoption of JSX(a special XML-like syntax) allows for the structuring of components that will then compile into JS React, when running on the server, can make for more friendly web pages than other JS frameworks, as the only thing seen by the client at that point is the generated HTML page(s)
+
+5. React can also render on the server using Node and power mobile apps using React Native
+
+AngularJs Vs ReactJs
+1. Data binding: Angular support Two-way data binding while React support One-Way data binding.
+
+
+2. Language: Angular is the composition of (Javascript & Html) while React is the composition of (JavaScript + JSX)
+
+
+3. Technology: Angular is full-fledged MVC framework written in JavaScript while react is V(view) of MVC
