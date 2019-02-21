@@ -1,0 +1,290 @@
+QUESTION 1
+
+"For the following data structure located in an AngularJS controller, what template would display the points value?
+
+$scope.team = {name: "chicago", points: "25"};"
+
+{{team.points}}
+
+{{$scope.team.points}}
+
+{{points}}
+
+"{{""points""}}"
+
+5 points   
+
+QUESTION 2
+
+An AnjularJS Single Page App uses client-side routing.
+
+True
+
+False
+
+5 points   
+
+QUESTION 3
+
+The _____ object holds the data and methods for the html section controlled by an AngularJS controller.
+
+$window
+
+$scope
+
+$server
+
+$object
+
+5 points   
+
+QUESTION 4
+
+"If a jQuery selection returns a collection of items, then any changes made to the collection are accomplished using automatic looping."
+
+True
+
+False
+
+5 points   
+
+QUESTION 5
+
+"This line:   $('#myDiv').load(url); "
+
+"adds a URL, like www.microsoft.com, to a division with an id of myDiv."
+
+none of the other answers are correct
+
+adds returned Ajax data to a html element with an id of myDiv.
+
+oad a URL into a script tag during a JSONP request
+
+5 points   
+
+QUESTION 6
+
+The jQuery _____function allows applying style data to a selected item.
+
+.code()
+
+.style()
+
+.css()
+
+.html()
+
+5 points   
+
+QUESTION 7
+
+You can load the jQuery library using the CDN provided by Google
+
+True
+
+False
+
+5 points   
+
+QUESTION 8
+
+AngularJS is a JavaScript library
+
+True
+
+False
+
+5 points   
+
+QUESTION 9
+
+To use Angular routing which of the following properly sets up the module?
+
+"var app = angular.module('mainApp', 'ngRoute');"
+
+"var app = angular.module('mainApp', function('ngRoute'));"
+
+none of the other answers are correct
+
+"var app = angular.module('mainApp', ['ngRoute']);"
+
+5 points   
+
+QUESTION 10
+
+The jQuery equivalent to innerHTML is _____
+
+add()
+
+text()
+
+inner()
+
+html()
+
+5 points   
+
+QUESTION 11
+
+The jQuery equivalent to window.onload() is _____.
+
+$(document).load()
+
+$(document).ready()
+
+$(document).delay()
+
+$(document).onload()
+
+5 points   
+
+QUESTION 12
+
+"What does this line do? $('#b1').on('click', showAverage); "
+
+displays the text 'showAverge' in an alert box.
+
+registers the showAverage() event handler to the click property of a set of elements with a class named b1.
+
+registers the showAverage() event handler to the click property of an element with an ID of b1.
+
+none of the other answers are correct
+
+5 points   
+
+QUESTION 13
+
+In the jQuery code segment $(".myStyle") , _____.
+
+.myStyle is a class selector
+
+.myStyle is an id selector
+
+.myStyle is a tag selector
+
+none of the other answers are correct
+
+5 points   
+
+QUESTION 14
+
+jQuery never uses CSS selectors.
+
+True
+
+False
+
+5 points   
+
+QUESTION 15
+
+mongoDB is a NOSQL database.
+
+True
+
+False
+
+5 points   
+
+QUESTION 16
+
+You put ng-click="get_name() in an opening button tag in your html, and you also have a template that looks like this, {{name}}. Assume the button is clicked. In the AngularJS controller, what function would assign a name to the template?
+
+$scope.get_name = function() {name = 'Rumpelstiltskin';};
+
+$scope.get_name = {name: 'Rumpelstiltskin';};
+
+$scope.get_name = function() {$scope.name = 'Rumpelstiltskin';};
+
+.get_name = function() {$scope.name = 'Rumpelstiltskin';};
+
+5 points   
+
+QUESTION 17
+
+AngularJS subscribes to the pig-in-a-poke design pattern.
+
+True
+
+False
+
+5 points   
+
+QUESTION 18
+
+"The ____ angular directive binds a JavaScript data structure to a repeating element like a HTML list or a HTML table and generates the HTML from that data structure."
+
+ng-app
+
+ng-model
+
+ng-bind
+
+ng-repeat
+
+5 points   
+
+QUESTION 19
+
+The angular 'ng-window' directive initializes the AngularJS environment
+
+True
+
+False
+
+5 points   
+
+QUESTION 20
+
+Angular's $routeProvider module handles HTTP GET and POST requests when exchanging data with the web server.
+
+True
+
+False
+
+
+
+
+Q1. {{team.points}}
+
+Q2. TRUE, beacuse Anngular JS provides the routing facility
+
+Q3. $scope
+
+Q4. True
+
+Q5. "adds a URL, like www.microsoft.com, to a division with an id of myDiv."
+
+Q6. .css()
+
+Q7. TRUE, By usingg this way.
+<head>
+<script src="jquery-3.2.0.min.js"></script>
+</head>
+
+Q8. FALSE, Beacuse frameworks create a skeleton for you to build your app; libraries give you functionality but are completely unopinionated about your app. Angular is definitely a framework
+
+Q9. "var app = angular.module('mainApp', ['ngRoute']);"
+
+Q10. html()
+
+Q11. $(document).load()
+
+Q12. registers the showAverage() event handler to the click property of an element with an ID of b1.
+
+Q13..myStyle is a class selector
+
+Q14. FALSE
+
+Q15.True.
+
+Q16.$scope.get_name = function() {name = 'Rumpelstiltskin';};
+
+Q17.True
+
+Q18. ng-app
+
+Q19.True
+
+Q20. True
+
