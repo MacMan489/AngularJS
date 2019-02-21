@@ -1,0 +1,17 @@
+I am trying to make a very small bookmarking app. 
+I am modifying this TODO app I found using AngularJS 
+(http://todomvc.com/examples/angularjs/#/active) .
+My goal right now is to have the user be able to enter into two boxes. 
+The first box is the title of their URL (Such as "Facebook") and the second box 
+is the copy and pasted URL (Such as "www.facebook.com/blahblahblah"). 
+When they put this into the bookmark manager, it will only display their custom title, 
+but it will be clickable and it will go to the actual URL that they pasted. 
+If you think you can quickly help me do this, please let me know. Thanks! Any tips appreciated!
+
+
+
+<a href="www.facebook.com/blahblahblah">Facebook</a>
+
+It will show "Facebook" on the screen but it will be clikable
+and will lead to "www.facebook.com/blahblahblah
+
