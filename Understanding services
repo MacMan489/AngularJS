@@ -1,0 +1,76 @@
+AngularJS Step-by-Step: Services
+
+What is a service?
+The word service is an overloaded term. I want to clarify that when I use the term service, I am really just referring to
+
+a simple object that does some sort of work. The type of service I'm talking about is typically stateless and encapsulates
+
+some sort of functionality. The main public members of a service are functions not properties, especially since having
+
+properties suggests some sort of state. I am not referring to over-the-wire services such as web services, RESTful
+
+services, or WCF services -- although these do indeed fall under my definition of a service. When I say service, that
+
+service may or may not be accessed over-the-wire. Most often, they're just objects called directly within your JavaScript.
+
+Why we need services
+
+The single responsibility principle teaches that every object should have a single responsibility. If we use the example of a controller, it's responsibility is essentially to wire up the scope (which holds your models) to your view; it is essentially the bridge between your models and your views. If your controller is also responsible for making ajax calls to fetch and update data, this is a violation of the SRP principle. Logic like that (and other business logic) should instead be abstracted out into a separate service, then injected into the objects that need to use it.
+
+This is where the Dependency Inversion Principle comes in. The DIP states that objects should depend on abstractions, not concretions. In languages like C# and Java, this means your objects depend on Interfaces instead of Classes. In JavaScript you could look at any parameter of any function (constructor function or otherwise) as an abstraction, since you can pass in any object for that parameter so long as it has the members on it that are used within that method. But the key here is the ability to use dependency injection - the ability to inject into other objects. This means that all of your controllers, directives, filters and other services should take in any external dependencies as parameters during construction. This allows you to have loosely coupled code and has the added benefit of making unit testing much easier.
+
+Creating a custom service
+Let's start with this fiddle which is where we ended in my last post. Notice that in the controller we are setting $scope.users1 to a static array of users. Let's change it so it's accessed via an ajax call. But, of course, this shouldn't be a responsibility of our Controller, so let's create a service to handle it, and our controller will call the service.
+
+To create the service, we use the module's factory method. Add this code to the bottom of the JavaScript in the fiddle:
+
+myModule.factory('userRepository', function() {
+return { };
+
+});
+
+With this code, we are creating a new service named userRepository. Notice that the first parameter of the factory method is the name we want to give to our service, and also notice that the second parameter of the factory method is a function. The object returned by that function represents our service. In this case we are simply returning an empty object literal, so our service does nothing. So this begs the question: if we simply return the object that is to be our service, why do we need all the other ceremony of myModule.factory? By using the factory method we are registering our service with Angular. This allows Angular's dependency injection container to inject an instance of our service when we request it in other places. I'll demonstrate this shortly when we use this service in our controller.
+
+For now, let's just let our service expose our static array of users. Update that return statement to look like this:
+
+return {
+getAllUsers: function() {
+
+return [
+
+{ firstName: 'Jane', lastName: 'Doe', age: 29 },
+
+{ firstName: 'John', lastName: 'Doe', age: 32 }
+
+];
+
+}
+
+};
+
+Notice that we are now returning an object with a getAllUsers() function on it. This function returns our array. Your fiddle should now look something like this. So now, we can call userRepository.getAllUsers() in order to get our array of users. Let's look at how we'd do that in our controller.
+
+Using your custom services
+Handling dependency injection is something that AngularJS does very well. It's incredibly simple, yet very effective. The first thing you have to do is register your service with Angular which we just demonstrated above. Now all you have to do to use it is inject it. But before we do that, let's remove the hard-coded users array that's in our controller. That way you can see that the page is currently not working. Remove the "$scope.users = ..." line from your controller, and you'll notice that the data disappears from the page. Now inject our new custom service by adding it as a parameter where we're already injecting $scope. Change the first line of your controller definition to look like this:
+
+myModule.controller('myController', function($scope, userRepository) {
+That's it. Angular will now take care of creating a userRepository for you to use in your controller. Now let's use our repository. Add this line inside the controller:
+
+$scope.users = userRepository.getAllUsers();
+Your fiddle should now look something like this. And now take a look at the output, we now have our users showing up on our page again, only this time, the data is coming from our service. Congratulations! You just created and used your first custom service.
+
+Using a built-in AngularJs service
+Now let's take another look at using a built-in Angular service, and replace our static user array with an http call. For this I've set up a MongoLab database with a users collection. You can see the data here. Let's hit that URL with the AngularJS $http service. First, inject the $http service into our new service:
+
+myModule.factory('userRepository', function($http) {
+Now, replace the code inside the getAllUsers method in the userRepository service with this:
+
+var url = "https://api.mongolab.com/api/1/databases/angularjs-intro/collections/users?apiKey=terrPcifZzn01_ImGsFOIZ96SwvSXgN9";
+return $http.get(url);
+
+Of course, now that we've made that change we're getting some really weird output on our page. That's because we're essentially returning a promise from our service, not the actual data. The $http call is asyncronous, and what is being returned is an object that has success and failure functions on it. We'll need to utilize these inside our controller, so change the "$scope.users =" line in the controller to look like this:
+
+userRepository.getAllUsers().success(function(users) {$scope.users = users});
+Now the data should be showing on the web page again, only this time it's coming from an http call to mongolabs! Pretty awesome, huh? Your fiddle should look like this. If you look at the line we just modified in our controller, you can see that we are specifying a function to be called upon success of the http/ajax call, and that function takes in the data returned from the ajax call. Inside that function we are setting $scope.users to the data from the ajax call.
+
+There are lots of built-in AngularJS services that are discussed in the AngularJS Fundamentals Pluralsight course, and creating custom services is also covered in greater detail.
